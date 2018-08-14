@@ -1,3 +1,16 @@
+//! This crate provides [`event_stream`](IEventTargetExt::event_stream) function for
+//! [`IEventTarget`](::stdweb::web::IEventTarget). The function simply returns a
+//! [`Stream`](::futures_core::Stream) of given [`ConcreteEvent`](::stdweb::web::event::ConcreteEvent).
+//!
+//! ```rust
+//! PromiseFuture::spawn_local(
+//!     document().event_stream().for_each(|e: ClickEvent| {
+//!         console!(log, e);
+//!         future::ok(())
+//!     }).map(|_|())
+//! );
+//! ```
+
 #[cfg_attr(test, macro_use)]
 extern crate stdweb;
 extern crate futures_core;
